@@ -1,3 +1,4 @@
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -5,30 +6,42 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html, body{
+    width:100%;
+    height:100%;
+}
+
+/* BODY */
 body{
     background:black;
     overflow:hidden;
     color:white;
 }
 
+/* ================= OPENING ================= */
+
 .opening{
     position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    height:100vh;
+    height:100dvh; /* penting untuk HP */
     background:black;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
+    padding:20px;
+    z-index:10;
 }
 
 .opening-box h1{
-    font-size:60px;
+    font-size:clamp(40px, 8vw, 70px);
     letter-spacing:5px;
 }
 
 .opening-box h2{
-    font-size:25px;
+    font-size:clamp(18px, 4vw, 28px);
     margin:10px 0;
     opacity:0.8;
 }
@@ -36,6 +49,7 @@ body{
 .opening-box p{
     margin-bottom:20px;
     opacity:0.6;
+    font-size:clamp(14px, 3vw, 18px);
 }
 
 .opening-box button{
@@ -51,32 +65,60 @@ body{
 
 .opening-box button:hover{
     background:gray;
+    transform:scale(1.05);
 }
+
+/* ================= SLIDESHOW ================= */
 
 .slideshow{
     display:none;
-    position:relative;
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    height:100vh;
+    height:100dvh; /* fix tinggi HP */
+    overflow:hidden;
 }
 
+/* GAMBAR */
 .slide{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:cover; /* bikin full layar */
+    object-position:center;
     opacity:0;
     transition:opacity 1.5s ease-in-out;
 }
 
+/* SLIDE AKTIF */
 .slide.active{
     opacity:1;
 }
 
+/* OVERLAY GELAP */
 .overlay{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
     background:rgba(0,0,0,0.4);
     z-index:1;
+}
+
+/* OPTIONAL: efek zoom cinematic halus */
+.slide.active{
+    animation: zoomEffect 4s ease-in-out forwards;
+}
+
+@keyframes zoomEffect{
+    0%{
+        transform:scale(1);
+    }
+    100%{
+        transform:scale(1.08);
+    }
 }
