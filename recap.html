@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Recap XI TKJ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgm" src="sound.mp3" loop></audio>
+
+<div class="opening">
+    <div class="opening-box">
+        <h1>XI TKJ</h1>
+        <h2>PALAPA BANDAR LAMPUNG</h2>
+        <p>Class Recap 2026</p>
+        <button onclick="startShow()">Mulai 🎬</button>
+    </div>
+</div>
+
+<div class="slideshow">
+    <div class="overlay"></div>
+
+    <img src="foto/1.jpeg" class="slide">
+    <img src="foto/2.jpeg" class="slide">
+    <img src="foto/3.jpeg" class="slide">
+    <img src="foto/4.jpeg" class="slide">
+    <img src="foto/5.jpeg" class="slide">
+    <img src="foto/6.jpeg" class="slide">
+    <img src="foto/7.jpeg" class="slide">
+    <img src="foto/8.jpeg" class="slide">
+    <img src="foto/9.jpeg" class="slide">
+    <img src="foto/10.jpeg" class="slide">
+    <img src="foto/11.jpeg" class="slide">
+    <img src="foto/12.jpeg" class="slide">
+    <img src="foto/13.jpeg" class="slide">
+    <img src="foto/14.jpeg" class="slide">
+</div>
+
+<script>
+window.onload = function(){
+
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+
+window.startShow = function(){
+
+    document.querySelector(".opening").style.display = "none";
+    document.querySelector(".slideshow").style.display = "block";
+
+    const music = document.getElementById("bgm");
+    music.play().catch(()=>{});
+
+    slides[0].classList.add("active");
+
+    setInterval(()=>{
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+    },2000);
+
+}
+
+}
+</script>
+
+</body>
+</html>
